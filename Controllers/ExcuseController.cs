@@ -13,7 +13,7 @@ public class ExcuseController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet("{id}", Name = "GetExcuseById")]
+    [HttpGet("{id:int}", Name = "GetExcuseById")]
     public Excuse GetExcuseById(int id)
     {
         return ExcuseService.GetExcuse(id);
@@ -23,5 +23,15 @@ public class ExcuseController : ControllerBase
     public Excuse GetRandomExcuse()
     {
         return ExcuseService.GetRandomExcuse();
+    }
+
+    /// <summary>
+    /// Gets excuses that have the given 'searchString'
+    /// Ex. "machine" matches "it worked on my machine" and "there are bugs in the machine"
+    /// </summary>
+    [HttpGet("{searchString}", Name = "GetExcusesByQuery")] 
+    public List<Excuse> GetExcusesByQuery(string searchString)
+    {
+        return ExcuseService.GetExcusesByQuery(searchString);
     }
 }
