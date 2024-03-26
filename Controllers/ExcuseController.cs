@@ -18,4 +18,10 @@ public class ExcuseController : ControllerBase
     {
         return ExcuseService.GetExcuse(id);
     }
+
+    [HttpGet(Name = "GetRandomExcuse")]
+    public Excuse GetRandomExcuse()
+    {
+        return ExcuseService.GetRandomExcuse();
+    }
 }
